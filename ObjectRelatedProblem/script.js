@@ -70,3 +70,47 @@ function calculateDifference(obj, diffirence) {
 console.log(calculateDifference({ "baseball bat": 20 }, 5))// ➞ 15
 console.log(calculateDifference({ skate: 10, painting: 20 }, 19))//  ➞ 11
 console.log(calculateDifference({ skate: 200, painting: 200, shoes: 1 }, 400))// ➞ 1
+
+
+// * PROBLEM 4 Scrabble Hand
+// Given an array of scrabble tiles, create a function that outputs the maximum possible score a player can achieve by summing up the total number of points for all the tiles in their hand. Each hand contains 7 scrabble tiles.
+
+
+function scrabbleHand(tiles) {
+    // Sort by highest score first
+    tiles.sort((a, b) => b.score - a.score);
+
+    // Take the top 7 tiles only
+    let hand = tiles.slice(0, 7);
+
+    // Sum their scores
+    let maximumScore = 0;
+    for (const tile of hand) {
+        maximumScore += tile.score;
+    }
+
+    return `The player's maximum score from playing 7 tiles would be ${maximumScore}`;
+}
+
+console.log(scrabbleHand([
+    { tile: "N", score: 1 },
+    { tile: "K", score: 5 },
+    { tile: "Z", score: 10 },
+    { tile: "X", score: 8 },
+    { tile: "D", score: 2 },
+    { tile: "A", score: 1 },
+    { tile: "E", score: 1 },
+    { tile: "E", score: 1 },
+    { tile: "E", score: 1 },
+]))
+
+
+console.log(scrabbleHand([
+    { tile: "B", score: 2 },
+    { tile: "V", score: 4 },
+    { tile: "F", score: 4 },
+    { tile: "U", score: 1 },
+    { tile: "D", score: 2 },
+    { tile: "O", score: 1 },
+    { tile: "U", score: 1 }
+]))
