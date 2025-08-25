@@ -157,3 +157,56 @@ function addName(obj, petName, value) {
 console.log(addName({}, "Brutus", 300)) // ➞ { Brutus: 300 }
 console.log(addName({ piano: 500 }, "Brutus", 400))// ➞ { piano: 500, Brutus: 400 }
 console.log(addName({ piano: 500, stereo: 300 }, "Caligula", 440)) // ➞ { piano: 500, stereo: 300, Caligula: 440 }
+
+
+// * PROBLEM 7
+
+// Try finding your ancestors and offspring with code.
+
+// Create a function that takes a number x and a character y ("m" for male, "f" for female), and returns the name of an ancestor (m/f) or descendant (m/f).
+
+// If the number is negative, return the related ancestor.
+// If positive, return the related descendant.
+// You are generation 0. In the case of 0 (male or female), return "me!".
+
+function checkGeneration(numb, char) {
+    let greatGenCount = 0;
+
+    // ME
+    if (numb === 0) return "me!";
+
+    // FEMALE descendants
+    if (numb === 1 && char === "f") return "daughter";
+    if (numb === 2 && char === "f") return "granddaughter";
+    if (numb > 2 && char === "f") {
+        greatGenCount = numb - 2;
+        return `${"great ".repeat(greatGenCount)}granddaughter`;
+    }
+
+    // MALE descendants
+    if (numb === 1 && char === "m") return "son";
+    if (numb === 2 && char === "m") return "grandson";
+    if (numb > 2 && char === "m") {
+        greatGenCount = numb - 2;
+        return `${"great ".repeat(greatGenCount)}grandson`;
+    }
+
+    // FEMALE ancestors
+    if (numb === -1 && char === "f") return "mother";
+    if (numb === -2 && char === "f") return "grandmother";
+    if (numb < -2 && char === "f") {
+        greatGenCount = Math.abs(numb) - 2;
+        return `${"great ".repeat(greatGenCount)}grandmother`;
+    }
+
+    // MALE ancestors
+    if (numb === -1 && char === "m") return "father";
+    if (numb === -2 && char === "m") return "grandfather";
+    if (numb < -2 && char === "m") {
+        greatGenCount = Math.abs(numb) - 2;
+        return `${"great ".repeat(greatGenCount)}grandfather`;
+    }
+}
+console.log(checkGeneration(-3, "m")) // ➞ "great grandfather"
+console.log(checkGeneration(1, "f"))// ➞ "daughter"
+console.log(checkGeneration(2, "f"))// ➞ "granddaughter"
