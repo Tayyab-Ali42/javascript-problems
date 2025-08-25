@@ -4,22 +4,22 @@
 
 // Assume that the following array of drink objects needs to be sorted:
 
-// let drinks = [
-//     { name: "lemonade", price: 50 },
-//     { name: "lime", price: 10 },
-//     { name: "lime 2", price: 6 },
-//     { name: "lime 2", price: 100 },
-// ]
+let drinks = [
+    { name: "lemonade", price: 50 },
+    { name: "lime", price: 10 },
+    { name: "lime 2", price: 6 },
+    { name: "lime 2", price: 100 },
+]
 
-// function sortedDrinks(drinks) {
+function sortedDrinks(drinks) {
 
-//     drinks.sort((a, b) => a.price - b.price)
-//     return drinks
+    drinks.sort((a, b) => a.price - b.price)
+    return drinks
 
-// }
+}
 
-// let result = sortedDrinks(drinks)
-// console.log(result)
+let Drinksresult = sortedDrinks(drinks)
+console.log(Drinksresult)
 
 
 // PROBLEM 2 Sign Your Name
@@ -114,3 +114,46 @@ console.log(scrabbleHand([
     { tile: "O", score: 1 },
     { tile: "U", score: 1 }
 ]))
+
+
+// PROBLEM 5 Printer Levels
+// Given an object of how many more pages each ink color can print, output the maximum number of pages the printer can print before any of the colors run out.
+
+
+// function inkLevels(inkLevels) {
+//     for (const key in inkLevels) {
+
+//     }
+// }
+
+// console.log(inkLevels({
+//     "cyan": 23,
+//     "magenta": 12,
+//     "yellow": 10
+// }))
+// console.log(inkLevels({
+//     "cyan": 432,
+//     "magenta": 543,
+//     "yellow": 777
+// }))
+
+// console.log(inkLevels({
+//     "cyan": 700,
+//     "magenta": 700,
+//     "yellow": 0
+// }))
+
+
+//  * PROBLEM 6
+
+// Given three arguments ⁠— an object obj of the stolen items, the pet's name and a value ⁠— return an object with that name and value in it (as key-value pairs).
+
+function addName(obj, petName, value) {
+    return { ...obj, [petName]: value }
+}
+
+
+
+console.log(addName({}, "Brutus", 300)) // ➞ { Brutus: 300 }
+console.log(addName({ piano: 500 }, "Brutus", 400))// ➞ { piano: 500, Brutus: 400 }
+console.log(addName({ piano: 500, stereo: 300 }, "Caligula", 440)) // ➞ { piano: 500, stereo: 300, Caligula: 440 }
